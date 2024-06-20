@@ -18,6 +18,8 @@ export type MenuItem =
 
 export type Restaurant = 
 {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    restaurant: any
     _id:string,
     user:string,
     restaurantName:string,

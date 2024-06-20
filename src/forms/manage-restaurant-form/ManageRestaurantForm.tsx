@@ -63,9 +63,6 @@ const ManageRestaurantForm = ({ onsave, isLoading,restaurant  }: Props) => {
         }
     });
 
-
-     
-           
           useEffect(() =>{
             if(!restaurant)
                 {
@@ -77,7 +74,7 @@ const ManageRestaurantForm = ({ onsave, isLoading,restaurant  }: Props) => {
                 const restaurantDeliveryPriceFormatted = parseInt((restaurant.restaurant.deliveryPrice / 100).toFixed(2));
                 const restaurantestimatedDeliveryTimeFormatted = restaurant.restaurant.estimatedDeliveryTime;
                 const restaurantcuisinesFormatted = restaurant.restaurant.cuisines;
-                const restaurantmenuItemsFormatted = restaurant.restaurant.menuItems.map((item) => ({
+                const restaurantmenuItemsFormatted = restaurant.restaurant.menuItems.map((item: { price: number; name: string; }) => ({
                     price: parseInt((item.price / 100).toFixed(2)),
                     name: item.name
                 }))
