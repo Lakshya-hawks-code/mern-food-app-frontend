@@ -36,3 +36,12 @@ export type Restaurant =
 
 
 
+export type SearchRestaurant = 
+{
+    data : Restaurant[],
+    pagination : {
+        total : number,
+        page : number,
+        pages : number
+    }
+}
