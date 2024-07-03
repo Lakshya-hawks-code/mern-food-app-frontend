@@ -11,7 +11,7 @@ const PaginationSelector = ({page,pages,onChangePage} : Props) =>
     {
 
         const pageArr = [];
-        for(let i = 0; i < page; i++)
+        for(let i = 0; i < pages; i++)
             {
                 pageArr.push(i);        
             }
