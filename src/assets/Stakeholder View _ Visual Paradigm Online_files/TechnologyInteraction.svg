@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="Layer_1" inkscape:version="0.91 r13725" sodipodi:docname="ArchiMateApplicationInteraction.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="53px" height="53px"
+	 viewBox="0 0 53 53" style="enable-background:new 0 0 53 53;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#path10_1_);stroke:#5F656D;stroke-width:3;}
+	.st1{fill:url(#path19_1_);stroke:#5F656D;stroke-width:3;}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1" gridtolerance="10" guidetolerance="10" id="namedview21" inkscape:current-layer="Layer_1" inkscape:cx="39.016596" inkscape:cy="25.444174" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-height="646" inkscape:window-maximized="0" inkscape:window-width="1280" inkscape:window-x="2594" inkscape:window-y="369" inkscape:zoom="9.44" objecttolerance="10" pagecolor="#ffffff" showgrid="false">
+	</sodipodi:namedview>
+<linearGradient id="path10_1_" gradientUnits="userSpaceOnUse" x1="573.4655" y1="-678.0898" x2="573.4655" y2="-737.1877" gradientTransform="matrix(1 0 0 -1 -559.585 -685.6249)">
+	<stop  offset="1.870000e-02" style="stop-color:#FFFFFF;stop-opacity:0.5"/>
+	<stop  offset="0.3976" style="stop-color:#C7F5C3"/>
+	<stop  offset="1" style="stop-color:#BDEFBB"/>
+</linearGradient>
+<path id="path10" inkscape:connector-curvature="0" class="st0" d="M4.2,26.5c0,10.9,8.5,19.8,19.3,20.3V6.2
+	C12.8,6.7,4.2,15.6,4.2,26.5z"/>
+<linearGradient id="path19_1_" gradientUnits="userSpaceOnUse" x1="598.5035" y1="-678.8086" x2="598.5035" y2="-741.395" gradientTransform="matrix(1 0 0 -1 -559.784 -685.6249)">
+	<stop  offset="1.870000e-02" style="stop-color:#FFFFFF;stop-opacity:0.5"/>
+	<stop  offset="0.3976" style="stop-color:#C7F5C3"/>
+	<stop  offset="1" style="stop-color:#BDEFBB"/>
+</linearGradient>
+<path id="path19" inkscape:connector-curvature="0" class="st1" d="M48.4,26.5c0,10.9-8.5,19.8-19.3,20.3V6.2
+	C39.8,6.7,48.4,15.6,48.4,26.5z"/>
+</svg>
