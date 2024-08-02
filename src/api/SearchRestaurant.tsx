@@ -21,7 +21,7 @@ export const useGetRestaurant = (restaurantId?: string) => {
  
      return response.json();
    };
- 
+      
    const { data: restaurant, isLoading } = useQuery(
      "fetchRestaurant",
      getRestaurantByIdRequest,

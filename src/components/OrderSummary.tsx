@@ -69,9 +69,11 @@ const OrderSummary = ({restaurant,cartItems,removeToCart} : Props) =>
                         ${(restaurant?.restaurant?.deliveryPrice / 100).toFixed(2)}
                       </span>
                     </div>
-           </CardContent>
+           </CardContent> 
         </>
       )
     }
 
     export default OrderSummary
+
+

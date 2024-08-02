@@ -66,3 +66,5 @@ const CheckOutButton = ({onCheckOut,isLoading,disabled} : Props) => {
 }
 
 export default CheckOutButton
+
+

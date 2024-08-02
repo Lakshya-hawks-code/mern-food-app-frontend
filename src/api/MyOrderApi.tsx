@@ -5,63 +5,53 @@ import { toast } from "sonner";
 const API_BASE_URL = import.meta.env.VITE_AUTH0_BASE_URL;
 
 type CheckOutSessionRequest = {
-    CartItem: {
-        menuItemId: string,
-        name: string,
-        quantity: string,
-    }[];
-
-    deliveryDetails: {
-        email: string,
-        name: string,
-        addressLine1: string,
-        city: string,
-    }
-    restaurantId: string;
-}
-
-
+  cartItems: {
+    menuItemId: string;
+    name: string;
+    quantity: string;
+  }[];
+  deliveryDetails: {
+    email: string;
+    name: string;
+    addressLine1: string;
+    city: string;
+    country: string
+  };
+  restaurantId: string;
+};
 
 export const useCreateCheckoutSession = () => {
-    const {getAccessTokenSilently} = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
-    const createCheckoutSession = async (checkoutSession : CheckOutSessionRequest) =>{
-         const accessToken = await getAccessTokenSilently()
-
-         const response = await fetch(`${API_BASE_URL}/api/v1/order/create-checkout-session`,
-            {
-                method : "POST",
-                headers:{
-                    "Content-Type": "application/json",
-                    Authorization : `${accessToken}`   
-                },
-                body:JSON.stringify(checkoutSession)
-            });
-
-            if(!response)
-            {
-                throw new Error("Create checkout session not create");
-            }
-               return response.json();
+  const createCheckoutSessionRequest = async (checkoutSessionRequest: CheckOutSessionRequest) => {
+    const accessToken = await getAccessTokenSilently();
+        
+    const response = await fetch(`${API_BASE_URL}/api/v1/order/create-checkout-session`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(checkoutSessionRequest),
+    });
+    
+    if (!response.ok) {
+      const errorResponse = await response.json();
+      throw new Error(errorResponse.message || "Unable to create checkout session");
     }
+    console.log(response,"response")
+    return response.json();   
+          
+  };
+  const { mutateAsync: createCheckoutSession, isLoading, error, reset } = useMutation(createCheckoutSessionRequest);
 
-      const {
-        mutateAsync : checoutSession,
-                     isLoading,
-                     error,
-                     reset
-      } = useMutation(createCheckoutSession)
+  if (error) {
+    toast.error(error.toString());
+    reset();
+  }
 
-
-        if(error)
-        {
-            toast.error(error.toString());
-        }
-
-      return {
-        checoutSession,
-        isLoading,
-        error,
-        reset
-      }
-}
+  return {
+    createCheckoutSession,
+    isLoading,
+  };
+};

@@ -17,7 +17,7 @@ import {useCreateCheckoutSession} from "../api/MyOrderApi";
 const DetailPage = () => {
     const { restaurantId } = useParams();
     const {  restaurant, isLoading } = useGetRestaurant(restaurantId);
-    const {checoutSession, isLoading : isCheckOutLoading} = useCreateCheckoutSession();
+    const {createCheckoutSession, isLoading : isCheckOutLoading} = useCreateCheckoutSession();
 
     const [cartItem,setCartItem] = useState<CartItem[]>(()=>{
       const storeCartItem = sessionStorage.getItem(`cartItem_${restaurantId}`);
@@ -28,9 +28,6 @@ const DetailPage = () => {
         return "Loading...";
     }
 
-    const onCheckOut = (userFromdata : UserFormData) => {
-          console.log(userFromdata,"userFromdata")
-    }
 
     // Add To Cart Function
     
@@ -66,6 +63,8 @@ const DetailPage = () => {
       });
     };
 
+
+
      // Remove to Cart Function
       
       const removeToCart = (cartItem : CartItemType) => {
@@ -78,8 +77,45 @@ const DetailPage = () => {
 
           return updatedCartItems
         })
-      } 
+      }; 
+
+
+
       
+
+      // Checkout function to using a payment gateway method
+
+      const onCheckOut = async(userFromdata : UserFormData) => {
+        if(!restaurant)
+          return
+
+     const checkOutData = {
+      cartItems : cartItem?.map((cartItems) =>({
+        menuItemId : cartItems._id,
+        name : cartItems.name,
+        quantity :cartItems.quantity.toString()
+      })),
+      restaurantId : restaurant?.restaurant?._id,
+      deliveryDetails : {
+        email : userFromdata.email as string,
+        name : userFromdata.name,
+        addressLine1 : userFromdata.addressLine1,
+        city : userFromdata.city,
+        country : userFromdata.country, 
+      },
+     };
+
+         // Data are successfully get to the redirect in a payment page 
+         
+      const data = await createCheckoutSession(checkOutData);
+      window.location.href = data.url;
+         
+        if(isLoading || !restaurant)
+        {
+          return "Loading..."
+        }
+      }
+
     return (
         <div className="flex flex-col gap-10">
             <AspectRatio ratio={16 / 9}>
@@ -105,10 +141,10 @@ const DetailPage = () => {
                      <CardFooter>
                            <CheckOutButton 
                            onCheckOut={onCheckOut} 
-                           isLoading={isLoading} 
-                           disabled={cartItem.length === 0}/>
+                           isLoading={isCheckOutLoading} 
+                           disabled={cartItem.length === 0}
+                           />
                       </CardFooter>
-
                   </Card>
                 </div>
               </div>
@@ -117,3 +153,5 @@ const DetailPage = () => {
 };
 
 export default DetailPage;
+
+
