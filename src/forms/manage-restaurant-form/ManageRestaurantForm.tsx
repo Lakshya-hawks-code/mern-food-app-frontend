@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Restaurant } from "@/types";
 import { useEffect } from "react";
 
-
+  
 
 const formSchema = z.object({
     restaurantName: z.string({
@@ -49,12 +49,12 @@ const formSchema = z.object({
 type RestaurantFormData = z.infer<typeof formSchema>;
 
 type Props = {
-    restaurant?:Restaurant
+    restaurant:Restaurant
     onsave: (restaurantFormData: FormData) => void,
     isLoading: boolean,
 };
 
-const ManageRestaurantForm = ({ onsave, isLoading,restaurant  }: Props) => {
+const ManageRestaurantForm = ({ restaurant, onsave,isLoading  }: Props) => {
     const form = useForm<RestaurantFormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -62,23 +62,23 @@ const ManageRestaurantForm = ({ onsave, isLoading,restaurant  }: Props) => {
             menuItems: [{ name: "", price: 0 }]
         }
     });
-
+           
           useEffect(() =>{
             if(!restaurant)
                 {
                        return;
                 }
-                const restaurantNameFormatted = restaurant.restaurant.restaurantName;
-                const restaurantCityFormatted = restaurant.restaurant.city;
-                const restaurantCountryFormatted = restaurant.restaurant.country;
-                const restaurantDeliveryPriceFormatted = parseInt((restaurant.restaurant.deliveryPrice / 100).toFixed(2));
-                const restaurantestimatedDeliveryTimeFormatted = restaurant.restaurant.estimatedDeliveryTime;
-                const restaurantcuisinesFormatted = restaurant.restaurant.cuisines;
-                const restaurantmenuItemsFormatted = restaurant.restaurant.menuItems.map((item: { price: number; name: string; }) => ({
+                const restaurantNameFormatted = restaurant.restaurantName;
+                const restaurantCityFormatted = restaurant?.city;
+                const restaurantCountryFormatted = restaurant?.country;
+                const restaurantDeliveryPriceFormatted = parseInt((restaurant?.deliveryPrice / 100).toFixed(2));
+                const restaurantestimatedDeliveryTimeFormatted = restaurant?.estimatedDeliveryTime;
+                const restaurantcuisinesFormatted = restaurant?.cuisines;
+                const restaurantmenuItemsFormatted = restaurant?.menuItems.map((item: { price: number; name: string; }) => ({
                     price: parseInt((item.price / 100).toFixed(2)),
                     name: item.name
                 }))
-                 const restaurantImageFormatted = restaurant.restaurant.imageUrl;
+                 const restaurantImageFormatted = restaurant?.imageUrl;
                 const updateRestaurant = {
                     ...restaurant,
                     restaurantName : restaurantNameFormatted,
@@ -90,12 +90,11 @@ const ManageRestaurantForm = ({ onsave, isLoading,restaurant  }: Props) => {
                     menuItems : restaurantmenuItemsFormatted,
                     imageUrl : restaurantImageFormatted
                 }
+
+                console.log(updateRestaurant,"updateRestaurant")
                 form.reset(updateRestaurant);
                
           },[form,restaurant])
-  
-
-
            
       
           
@@ -143,6 +142,13 @@ const ManageRestaurantForm = ({ onsave, isLoading,restaurant  }: Props) => {
 };
 
 export default ManageRestaurantForm;
+
+
+
+
+
+
+
 
 
 

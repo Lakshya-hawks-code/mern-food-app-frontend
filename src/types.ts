@@ -17,10 +17,8 @@ export type MenuItem =
 } 
 
 export type Restaurant = 
-{
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    restaurant: any
-    _id:string,
+{  
+    _id:string,  
     user:string,
     restaurantName:string,
     city:string,
@@ -54,4 +52,28 @@ export type CartItem =
     name : string,
     price : number,
     quantity : number
+}
+
+export type OrderStatus = "placed" | "paid" | "inProgress" | "outForDelivery" | "delivered"
+         
+export type Order = 
+{
+    _id : string,
+    restaurant : Restaurant,
+    user : User,
+    deliveryDetails : {
+        email : string,
+        name : string,
+        addressLine1 : string,
+        city : string
+    },
+    cartItems : {
+        menuItemId : string,
+        name : string,
+        quantity : string
+    }[];  
+    status : OrderStatus
+    totalAmount : number,
+    createdAt : string,
+    restaurantId : string
 }
