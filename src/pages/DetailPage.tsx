@@ -95,7 +95,7 @@ const DetailPage = () => {
         name : cartItems.name,
         quantity :cartItems.quantity.toString()
       })),
-      restaurantId : restaurant?.restaurant?._id,
+      restaurantId : restaurant._id,
       deliveryDetails : {
         email : userFromdata.email as string,
         name : userFromdata.name,
@@ -130,7 +130,7 @@ const DetailPage = () => {
                   <span className="text-2xl font-bold tracking-tight">
                     Menu
                   </span>
-                  {restaurant?.restaurant?.menuItems?.map((menuItem : MenuItemType)=>(
+                  {restaurant.menuItems.map((menuItem : MenuItemType)=>(
                       <MenuItem menuItem={menuItem} addToCart={() => addToCart(menuItem)}/>
                   ))}
                 </div>
