@@ -18,17 +18,17 @@ const RestaurantInfo = ({ restaurant }: Props) => {
         <Card className="border-sla">
             <CardHeader>
                 <CardTitle className="text-3xl font-bold tracking-tight">
-                    {restaurant?.restaurant?.restaurantName}
+                    {restaurant.restaurantName}
                 </CardTitle>
                 <CardDescription>
-                    {restaurant?.restaurant?.city} , {restaurant?.restaurant?.country}
+                    {restaurant.city} , {restaurant.country}
                 </CardDescription> 
             </CardHeader>
             <CardContent className="flex">
-        {restaurant?.restaurant?.cuisines?.map((item:string, index:number) => (
+        {restaurant.cuisines?.map((item:string, index:number) => (
           <span className="flex">
             <span>{item}</span>
-            {index < restaurant?.restaurant?.cuisines?.length - 1 && <Dot />}
+            {index < restaurant.cuisines?.length - 1 && <Dot />}
           </span>
         ))}
       </CardContent>

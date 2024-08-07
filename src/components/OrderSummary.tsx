@@ -24,7 +24,7 @@ const OrderSummary = ({restaurant,cartItems,removeToCart} : Props) =>
           const totalPence = cartItems.reduce((total,cartItem)=> total + cartItem.price * cartItem.quantity,0)
 
           
-    const totalWithDelivery = totalPence + restaurant?.restaurant?.deliveryPrice;
+    const totalWithDelivery = totalPence + restaurant.deliveryPrice;
 
     return (totalWithDelivery / 100).toFixed(2);
         
@@ -66,7 +66,7 @@ const OrderSummary = ({restaurant,cartItems,removeToCart} : Props) =>
                         Delivery
                       </span>
                       <span>
-                        ${(restaurant?.restaurant?.deliveryPrice / 100).toFixed(2)}
+                        ${(restaurant.deliveryPrice / 100).toFixed(2)}
                       </span>
                     </div>
            </CardContent> 
@@ -75,5 +75,3 @@ const OrderSummary = ({restaurant,cartItems,removeToCart} : Props) =>
     }
 
     export default OrderSummary
-
-
